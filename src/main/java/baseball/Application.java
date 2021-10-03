@@ -95,25 +95,38 @@ public class Application {
 
     //결과 리턴
     public static void playResult() {
-    	
+    	StringBuilder result = new StringBuilder();
+    	result.append(playResultStrike());
+    	result.append(playResultBall());
+    	result.append(playResultNothing());
+    	System.out.println(result);
+    }
+    
+    public static String playResultStrike() {
     	StringBuilder result = new StringBuilder();
     	if(STRIKE > 0) {
     		result.append(STRIKE).append("스트라이크 ");
     	}
+    	return result.toString();
+    }
+    
+    public static String playResultBall() {
+    	StringBuilder result = new StringBuilder();
     	if(BALL > 0) {
     		result.append(BALL).append("볼");
     	}
+    	return result.toString();
+    }
+    
+    public static String playResultNothing() {
+    	StringBuilder result = new StringBuilder();
     	if(STRIKE == 0 && BALL == 0) {
     		result.append("낫싱");
     	}
-    	
-    	
-    	System.out.println(result);
+    	return result.toString();
     }
-    
 
     public static void gameRestart() {
-    	
     	int gameRestartInputVal = 0;
     	while(gameRestartInputVal == 0) {
     		gameRestartInputVal = gameRestartKeyIn();
@@ -124,7 +137,6 @@ public class Application {
     	if(gameRestartInputVal == 2) {
     		System.exit(0);
     	}
-    	
     }
     
     public static int gameRestartKeyIn() {
@@ -142,4 +154,5 @@ public class Application {
     	System.out.println(msg);
     	return Console.readLine();
     }
+
 }
