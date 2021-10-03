@@ -32,7 +32,31 @@ public class Application {
     	
     	// 게임 결과
     	playResult();
-    	    	
+
+    	// 게임 재시작 여부 문의
+    	if(STRIKE == 3) {
+    		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
+    		
+    		int gameRestartInputVal = 0;
+        	while(gameRestartInputVal == 0) {
+        		//gameRestartInputVal = gameRestartKeyIn();
+        		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        		
+        		String inputVal = Console.readLine();
+        		if( inputVal == null || ( !"1".equals(inputVal) && !"2".equals(inputVal) )) {
+        			System.out.println("잘못입력했습니다.");
+        			gameRestartInputVal = 0;
+            	}
+        		gameRestartInputVal = Integer.parseInt(inputVal);
+        	}
+        	if(gameRestartInputVal == 1) {
+        		RANDOM_VAL = random();
+        	}
+        	if(gameRestartInputVal == 2) {
+        		System.exit(0);
+        	}
+        	
+    	}
     }
     
     public static String random() {
@@ -92,5 +116,5 @@ public class Application {
     	System.out.println(result);
     }
     
-    
+
 }
