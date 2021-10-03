@@ -46,6 +46,7 @@ public class Application {
         		if( inputVal == null || ( !"1".equals(inputVal) && !"2".equals(inputVal) )) {
         			System.out.println("잘못입력했습니다.");
         			gameRestartInputVal = 0;
+        			continue;
             	}
         		gameRestartInputVal = Integer.parseInt(inputVal);
         	}
