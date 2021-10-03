@@ -39,7 +39,7 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
-    void 잘못입력() {
+    void 게임종료_후_잘못입력() {
         try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
             mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                     .thenReturn(7, 1, 3)
