@@ -23,8 +23,7 @@ public class Application {
     public static void gamePlay() {
     	
     	// 값 입력
-    	System.out.print("숫자를 입력해주세요 : ");
-    	INPUT_VAL = Console.readLine();
+    	INPUT_VAL = consoleKeyIn("숫자를 입력해주세요 : ");
     	System.out.println(INPUT_VAL);
     	
     	// 게임 평가
@@ -36,27 +35,7 @@ public class Application {
     	// 게임 재시작 여부 문의
     	if(STRIKE == 3) {
     		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
-    		
-    		int gameRestartInputVal = 0;
-        	while(gameRestartInputVal == 0) {
-        		//gameRestartInputVal = gameRestartKeyIn();
-        		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        		
-        		String inputVal = Console.readLine();
-        		if( inputVal == null || ( !"1".equals(inputVal) && !"2".equals(inputVal) )) {
-        			System.out.println("잘못입력했습니다.");
-        			gameRestartInputVal = 0;
-        			continue;
-            	}
-        		gameRestartInputVal = Integer.parseInt(inputVal);
-        	}
-        	if(gameRestartInputVal == 1) {
-        		RANDOM_VAL = random();
-        	}
-        	if(gameRestartInputVal == 2) {
-        		System.exit(0);
-        	}
-        	
+    		gameRestart();
     	}
     }
     
@@ -118,4 +97,34 @@ public class Application {
     }
     
 
+    public static void gameRestart() {
+    	
+    	int gameRestartInputVal = 0;
+    	while(gameRestartInputVal == 0) {
+    		gameRestartInputVal = gameRestartKeyIn();
+    	}
+    	if(gameRestartInputVal == 1) {
+    		RANDOM_VAL = random();
+    	}
+    	if(gameRestartInputVal == 2) {
+    		System.exit(0);
+    	}
+    	
+    }
+    
+    public static int gameRestartKeyIn() {
+		
+		String inputVal = consoleKeyIn("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		if( inputVal == null || ( !"1".equals(inputVal) && !"2".equals(inputVal) )) {
+			System.out.println("잘못입력했습니다.");
+    		return 0;
+    	}
+    	return Integer.parseInt(inputVal);
+    }
+
+    
+    public static String consoleKeyIn(String msg) {
+    	System.out.println(msg);
+    	return Console.readLine();
+    }
 }
