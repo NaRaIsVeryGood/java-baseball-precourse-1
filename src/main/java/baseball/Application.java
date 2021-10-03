@@ -27,7 +27,7 @@ public class Application {
     	
     	// 값 입력
     	INPUT_VAL = consoleKeyIn("숫자를 입력해주세요 : ");
-    	System.out.println(INPUT_VAL);
+    	//System.out.println(INPUT_VAL);
     	
     	// 게임 평가
     	playEvaluation();
@@ -49,7 +49,7 @@ public class Application {
     		tmvVal = String.valueOf(Randoms.pickNumberInRange(1, 9));
     		randomVal += isUniqeRandomNumber(randomVal, tmvVal);
     	}
-    	System.out.println("random Number : " + randomVal); 
+    	//System.out.println("random Number : " + randomVal); 
     	return randomVal;
     }
     
