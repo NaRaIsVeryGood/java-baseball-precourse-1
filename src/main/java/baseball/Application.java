@@ -11,14 +11,17 @@ public class Application {
 	static int STRIKE = 0;
 	static int BALL = 0;
 	
+	
 	public static void main(String[] args) {
 
 		RANDOM_VAL = random();
         
-        while(true) {
-        	gamePlay();
-        }
-    }
+		while (true) {
+			gamePlay();
+		}
+
+	}
+
 	
     public static void gamePlay() {
     	
@@ -37,12 +40,24 @@ public class Application {
     		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 끝");
     		gameRestart();
     	}
-    }
+    } 
     
     public static String random() {
-    	String randomVal = String.valueOf(Randoms.pickNumberInRange(1, 9)) + String.valueOf(Randoms.pickNumberInRange(1, 9)) + String.valueOf(Randoms.pickNumberInRange(1, 9));
-    	System.out.println("randomNumber : " + randomVal);  
+    	String randomVal = "";
+    	String tmvVal = "";
+    	while(randomVal.length() < 3) {
+    		tmvVal = String.valueOf(Randoms.pickNumberInRange(1, 9));
+    		randomVal += isUniqeRandomNumber(randomVal, tmvVal);
+    	}
+    	System.out.println("random Number : " + randomVal); 
     	return randomVal;
+    }
+    
+    public static String isUniqeRandomNumber(String beforeVals, String randomNum) {
+    	if(beforeVals.contains(randomNum)) {
+    		return "";
+    	}
+    	return randomNum;
     }
 
     
